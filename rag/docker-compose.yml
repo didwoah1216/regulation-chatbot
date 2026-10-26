@@ -1,0 +1,17 @@
+# 벡터만 이 컨테이너에 둔다.
+# 6700 XT는 Docker Desktop이 컨테이너에 넘기지 않으므로, 임베딩은 Windows의 llama.cpp가 한다.
+
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: regulation
+      POSTGRES_PASSWORD: regulation
+      POSTGRES_DB: regulation
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
